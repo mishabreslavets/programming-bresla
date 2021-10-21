@@ -1,0 +1,194 @@
+	1. Перший крок я пропустив, бо вже був зареєстрований.
+	2. Спочатку я склонував репозиторiй командою git clone, щоб мати доступ до файлiв.
+
+mishaaaaa@mishaaaaa-VirtualBox:~$ git clone https://github.com/davydov-vyacheslav/sample_project
+Cloning into 'sample_project'...
+remote: Enumerating objects: 155, done.
+remote: Counting objects: 100% (155/155), done.
+remote: Compressing objects: 100% (91/91), done.
+remote: Total 155 (delta 71), reused 108 (delta 45), pack-reused 0
+Receiving objects: 100% (155/155), 428.85 KiB | 2.63 MiB/s, done.
+Resolving deltas: 100% (71/71), done.
+
+	3. Далі я створив каталог lab02, скопіював приведені у тексті лабороторної работи файли та каталоги для подальшої роботи, використовуючи команду cp.
+
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop$ mkdir lab02
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop$ cp sample_project/{.clang-format,.clang-tidy,.gitlab-ci.yml} lab02
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop$ ls
+lab02  sample_project
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop$ tree
+.
+├── lab02
+└── sample_project
+    ├── CMakeLists.txt
+    ├── lab00
+    │   ├── doc
+    │   │   ├── assets
+    │   │   │   └── animal-fields.png
+    │   │   ├── lab00.docx
+    │   │   ├── lab00.md
+    │   │   └── lab00.pdf
+    │   ├── Doxyfile
+    │   ├── Makefile
+    │   ├── README.md
+    │   ├── src
+    │   │   ├── lib.c
+    │   │   ├── lib.h
+    │   │   └── main.c
+    │   └── test
+    │       └── test.c
+    ├── lab03-sample
+    │   └── doc
+    │       └── lab03.txt
+    └── README.md
+
+9 directories, 14 file lab02
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop$ cp -r sample_project/lab00/{Doxyfile,Makefile,README.md,src,test} lab02
+
+	Перевірив, що файли скопіювались коректно командою tree.
+
+	4. З цим пунктом виникли де-які труднощі. Я забув склонувати свій репозиторій, тому довелось зараз.
+
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop$ git clone https://github.com/mishabreslavets/programming-bresla.git
+Cloning into 'programming-bresla'...
+warning: You appear to have cloned an empty repository.
+
+	Далі переніс каталог із лабороторною роботую до цього каталогу.
+
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop$ mv lab02 programming-bresla/
+
+	Потім додав інформацію про себе, щоб встановити себе як особу за замовчуванням.
+
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop$ cd programming-bresla/
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla$ git commit
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'mishaaaaa@mishaaaaa-VirtualBox.(none)')
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla$ git config --global user.email "mishailus.re@gmail.com"
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla$ git config --global user.name "Misha Breslavets"
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla$ git commit
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	lab02/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+	Наступним етапом було додавання свого каталогу командою git add.
+
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla$ git add lab02
+
+	І тільки після цього я змог закомітити зміни.
+
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla$ git commit
+[master (root-commit) 9d08755] Виконав пункт 4
+ 10 files changed, 479 insertions(+)
+ create mode 100644 lab02/.clang-format
+ create mode 100644 lab02/.clang-tidy
+ create mode 100644 lab02/.gitlab-ci.yml
+ create mode 100644 lab02/Doxyfile
+ create mode 100644 lab02/Makefile
+ create mode 100644 lab02/README.md
+ create mode 100644 lab02/src/lib.c
+ create mode 100644 lab02/src/lib.h
+ create mode 100644 lab02/src/main.c
+ create mode 100644 lab02/test/test.c
+
+	5.Я внес зміни до файлів lib.c та lib.h, просто добавив аналог вже існуючих тварин. Скомпилював використовуючи Makefile, командою make clean prep compile run
+
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla/lab02$ make clean prep compile
+rm -rf dist
+mkdir dist
+clang -std=gnu11 -g -Wall -Wextra -Werror -Wformat-security -Wfloat-equal -Wshadow -Wconversion -Wlogical-not-parentheses -Wnull-dereference -Wno-unused-variable -Werror=vla -I./src src/lib.c src/main.c -o ./dist/main.bin
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla/lab02$ make run
+rm -rf dist
+mkdir dist
+clang -std=gnu11 -g -Wall -Wextra -Werror -Wformat-security -Wfloat-equal -Wshadow -Wconversion -Wlogical-not-parentheses -Wnull-dereference -Wno-unused-variable -Werror=vla -I./src src/lib.c src/main.c -o ./dist/main.bin
+./dist/main.bin
+Інформація про тварину №01: Собака: зріст = 36 см, маса = 92 гр. 
+Інформація про тварину №02: Корова: зріст = 12 см, маса = 41 гр. 
+Інформація про тварину №03: Собака: зріст = 11 см, маса = 11 гр. 
+Інформація про тварину №04: Собака: зріст = 87 см, маса = 68 гр. 
+Інформація про тварину №05: Людина: зріст = 35 см, маса = 114 гр. 
+Інформація про тварину №06: Корова: зріст = 4 см, маса = 1 гр. 
+Інформація про тварину №07: Корова: зріст = 115 см, маса = 105 гр. 
+Інформація про тварину №08: Собака: зріст = 36 см, маса = 23 гр. 
+Інформація про тварину №09: Свиня: зріст = 15 см, маса = 101 гр. 
+Інформація про тварину №10: Людина: зріст = 42 см, маса = 9 гр. 
+
+	Як можно побачити Людина успішна створюється и має коректні зріст та масу.
+
+	6. За якоюсь причиною в мене lldb ніяк не міг поставити брейкпоінт, тому я використав gdb. Для виводу значень змінних я юзав fr v, для встановлення точки остановки b *номер строки*
+	
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla/lab02/dist$ gdb main.bin
+GNU gdb (Ubuntu 10.1-2ubuntu2) 10.1.90.20210411-git
+Copyright (C) 2021 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from main.bin...
+(gdb) l
+26	
+27	/**
+28	 * Головна функція.
+29	 *
+30	 * Послідовність дій:
+31	 * - створення масиву із {@link ANIMAL_COUNT} тварин
+32	 * - генерація даних для кожної тварини шляхом виклика функції
+33	 * {@link generate_animal}
+34	 * - вивід даних про всіх тварин на екран за допомогою функції
+35	 * {@link show_animals}
+(gdb) l
+36	 * @return успішний код повернення з програми (0)
+37	 */
+38	int main()
+39	{
+40		srand((unsigned int)time(0));
+41		struct animal animals[ANIMAL_COUNT];
+42	
+43		for (unsigned int i = 0; i < ANIMAL_COUNT; i++) {
+44			generate_animal(&animals[i]);
+45		}
+(gdb) l
+46		show_animals(animals, ANIMAL_COUNT);
+47	
+48		return 0;
+49	}
+(gdb) l
+Line number 50 out of range; src/main.c has 49 lines.
+(gdb) b 40
+Breakpoint 1 at 0x401302: file src/main.c, line 40.
+(gdb) b 45
+Breakpoint 2 at 0x401353: file src/main.c, line 46.
+(gdb) b 50
+No line 50 in the current file.
+Make breakpoint pending on future shared library load? (y or [n]) n
+(gdb) run
+Starting program: /home/mishaaaaa/Desktop/programming-bresla/lab02/dist/main.bin 
+
+Breakpoint 1, main () at src/main.c:40
+40		srand((unsigned int)time(0));
+
