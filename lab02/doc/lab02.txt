@@ -192,3 +192,168 @@ Starting program: /home/mishaaaaa/Desktop/programming-bresla/lab02/dist/main.bin
 Breakpoint 1, main () at src/main.c:40
 40		srand((unsigned int)time(0));
 
+	7. За допомогою команди git add та git commit закомiтив та запушив файли. Для цього довелось авторизоватися через особистий токен.
+
+user@user-vtp305-12:~/programming-bresla$ git commit
+[main 5957fac] Gitignore was modified to ignore /dist/
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+
+user@user-vtp305-12:~/programming-bresla$ git push
+Username for 'https://github.com': mishabreslavets
+Password for 'https://mishabreslavets@github.com': 
+Подсчет объектов: 4, готово.
+Delta compression using up to 4 threads.
+Сжатие объектов: 100% (3/3), готово.
+Запись объектов: 100% (4/4), 329 bytes | 329.00 KiB/s, готово.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/mishabreslavets/programming-bresla
+   5957fac..50c34aa  main -> main
+
+	Для перевірки дерева файлів я використав tree -a
+
+user@user-vtp305-12:~/programming-bresla$ tree -a
+.
+├── .clang-format
+├── .clang-tidy
+├── .git
+│   ├── branches
+│   ├── COMMIT_EDITMSG
+│   ├── config
+│   ├── description
+│   ├── HEAD
+│   ├── hooks
+│   │   ├── applypatch-msg.sample
+│   │   ├── commit-msg.sample
+│   │   ├── fsmonitor-watchman.sample
+│   │   ├── post-update.sample
+│   │   ├── pre-applypatch.sample
+│   │   ├── pre-commit.sample
+│   │   ├── prepare-commit-msg.sample
+│   │   ├── pre-push.sample
+│   │   ├── pre-rebase.sample
+│   │   ├── pre-receive.sample
+│   │   └── update.sample
+│   ├── index
+│   ├── info
+│   │   └── exclude
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   │       ├── heads
+│   │       │   └── main
+│   │       └── remotes
+│   │           └── origin
+│   │               ├── HEAD
+│   │               └── main
+│   ├── objects
+│   │   ├── 05
+│   │   │   └── 984d53270d3583ac2c206b0ed9f673eb63b42c
+│   │   ├── 10
+│   │   │   └── c9c96f5cba65fd709f2e4887712845888033ce
+│   │   ├── 26
+│   │   │   └── 8aed281472be21b682fe316ce908d8225a9f41
+│   │   ├── 33
+│   │   │   └── 51f937432ab4c08d40d1398a015cbd27effc04
+│   │   ├── 37
+│   │   │   └── 420af04bf9de8ae4636706fd53ebb8e14a4940
+│   │   ├── 44
+│   │   │   └── dcaf53e4e6717728a77ed855ff3a743446c89e
+│   │   ├── 4c
+│   │   │   ├── d176d6de1e538ef7b9d7dc299e65246baf6b9b
+│   │   │   └── e585b8281055479d3d991fad682a71a62e5a35
+│   │   ├── 50
+│   │   │   └── c34aab0fba91fc62f5c03b3484a3b452f74ca3
+│   │   ├── 51
+│   │   │   └── f0371af2c73d78657a9f4ba6ac406129f6fa7f
+│   │   ├── 53
+│   │   │   └── de7c184a4b70e2568333df47682da9c6a2b023
+│   │   ├── 59
+│   │   │   └── 57fac9a555bf522193551415d65fbcb66228a1
+│   │   ├── 5f
+│   │   │   └── df3ec7013fb14a24c684d08dcaee525529e734
+│   │   ├── 6d
+│   │   │   └── 667f2edee00c6bb35bb78c602a4e902aff38be
+│   │   ├── 75
+│   │   │   └── c97a7cb47c1601216386027cc27cc28f71214b
+│   │   ├── 76
+│   │   │   └── 8bbd896c1d26a54685834c2ad7fe3f1976ac03
+│   │   ├── 7b
+│   │   │   └── ef201ed498523923ebe2080690cd2b40fbe4d4
+│   │   ├── 80
+│   │   │   └── e1157a8163163fbac1aef7e758efaf376b5fd9
+│   │   ├── 8f
+│   │   │   └── e117349817a333a53a6a3fb6b7970cc3dc6f91
+│   │   ├── 90
+│   │   │   └── 4c3377b216b716de976fba3b5bed10c3ffcde9
+│   │   ├── 91
+│   │   │   └── 62c5392326ae5190719c41c9ab303715aac7e3
+│   │   ├── 99
+│   │   │   └── 0ad9d03ac88e4c58865968cbe1b8bcc8011a83
+│   │   ├── 9e
+│   │   │   └── 3e33cfd6b8bcb05a1ac7001fbd7d625c2e66c4
+│   │   ├── a2
+│   │   │   └── 61f291755404ef0ada9e519a6bf80c8172d305
+│   │   ├── a7
+│   │   │   └── 004e4d4d9aa8bcd8e0aa7b7a6ece3fb2349182
+│   │   ├── b1
+│   │   │   └── bd38b62a0800a4f6a80c34e21c5acffae52c7e
+│   │   ├── b2
+│   │   │   └── 32802821e5cfdd9d5b6d3838a974b3cddce261
+│   │   ├── b9
+│   │   │   ├── 892a8b013974f6e848cb64748ddb5e61556d75
+│   │   │   └── d96533618a213674c312884a20c8534801d73d
+│   │   ├── ba
+│   │   │   └── c08c94951168438d329cfc3c2b5e78921e1539
+│   │   ├── bb
+│   │   │   └── bccda225ea49090f96da0f22a4deaa9ecae6f8
+│   │   ├── cb
+│   │   │   └── 34c79336a3451a9a31411c0c54264744612025
+│   │   ├── da
+│   │   │   └── a2fc843b09f384bc1c64f4000b94de6fcf4247
+│   │   ├── de
+│   │   │   └── 7daefacb26379dea04991ea1f6c27014a518a8
+│   │   ├── e4
+│   │   │   └── 7e423961ab6fff3af25d47b71acab37ac8c8e2
+│   │   ├── f4
+│   │   │   └── 2744a662e5794a614f91a75ef03d12577f72c5
+│   │   ├── f7
+│   │   │   └── cbb1744d4c112dd1850584d315374b81617fe9
+│   │   ├── info
+│   │   └── pack
+│   ├── packed-refs
+│   └── refs
+│       ├── heads
+│       │   └── main
+│       ├── remotes
+│       │   └── origin
+│       │       ├── HEAD
+│       │       └── main
+│       └── tags
+├── .gitignore
+├── .gitlab-ci.yml
+├── lab01
+│   └── doc
+│       └── lab00_breslavets.docx
+├── lab02
+│   ├── .clang-format
+│   ├── .clang-tidy
+│   ├── doc
+│   │   └── lab02.txt
+│   ├── Doxyfile
+│   ├── .gitlab-ci.yml
+│   ├── Makefile
+│   ├── README.md
+│   ├── src
+│   │   ├── lib.c
+│   │   ├── lib.h
+│   │   └── main.c
+│   └── test
+│       ├── test.c
+│       └── test.c.dump
+└── README.md
+
+58 directories, 80 files
+
+	8. Різниця при компляції з відладчиком та без полягає у тому, що з ним ми маємо можливість проходити файл построчно, перевіряючи його працездатність на кожному етапі. Це дає змогу точніше зрозуміти шлях роботи програми. Без нього ми бачемо тільки результат роботи.
