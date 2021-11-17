@@ -1,0 +1,93 @@
+1. Перш за все, я зробив пустий клас main.
+
+int main(){
+        return 0;
+}
+
+2. Я добавив інпут двох елементів.
+
+int main(){
+        int left_board = 1; //задается левая граница диапозона 
+        int right_board = 100; //задается правая граница диапозона
+        return 0;
+}
+
+3. Записав у програму логіку виконання метода Гауса.
+
+int main(){
+        int left_board = 1; //задается левая граница диапозона 
+        int right_board = 100; //задается правая граница диапозона
+        int sum = (left_board + right_board) * (right_board - left_board + 1) / 2; //вычисляется сумма целых чисел в диапозоне методом Гаусса.
+// Считается сумма пары крайних элементов и умножается на количество пар
+        return 0;
+}
+
+4. Протестував роботу програми на деяких тестах.
+
+Тест №1. Класична задача, сума чисел з 1 до 100.
+
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla/lab03$ lldb dist/main.bin 
+(lldb) target create "dist/main.bin"
+Current executable set to '/home/mishaaaaa/Desktop/programming-bresla/lab03/dist/main.bin' (x86_64).
+(lldb) b 6
+Breakpoint 1: where = main.bin`main + 54 at main.c:6:2, address = 0x0000000000401146
+(lldb) run
+Process 4738 launched: '/home/mishaaaaa/Desktop/programming-bresla/lab03/dist/main.bin' (x86_64)
+Process 4738 stopped
+* thread #1, name = 'main.bin', stop reason = breakpoint 1.1
+    frame #0: 0x0000000000401146 main.bin`main at main.c:6:2
+   3   		int right_board = 100; //задается правая граница диапозона
+   4   		int sum = (left_board + right_board) * (right_board - left_board + 1) / 2; //вычисляется сумма целых чисел в диапозоне методом Гаусса.
+   5   	// Считается сумма пары крайних элементов и умножается на количество пар
+-> 6   		return 0;
+   7   	}
+(lldb) fr v
+(int) left_board = 1
+(int) right_board = 100
+(int) sum = 5050
+
+Тест №2. Сума чисел, де ліва границя виходить за  межі натуральних чисел.
+
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla/lab03$ lldb dist/main.bin 
+(lldb) target create "dist/main.bin"
+Current executable set to '/home/mishaaaaa/Desktop/programming-bresla/lab03/dist/main.bin' (x86_64).
+(lldb) b 6
+Breakpoint 1: where = main.bin`main + 54 at main.c:6:2, address = 0x0000000000401146
+(lldb) run
+Process 3742 launched: '/home/mishaaaaa/Desktop/programming-bresla/lab03/dist/main.bin' (x86_64)
+Process 3742 stopped
+* thread #1, name = 'main.bin', stop reason = breakpoint 1.1
+    frame #0: 0x0000000000401146 main.bin`main at main.c:6:2
+   3   		int right_board = 6; //задается правая граница диапозона
+   4   		int sum = (left_board + right_board) * (right_board - left_board + 1) / 2; //вычисляется сумма целых чисел в диапозоне методом Гаусса.
+   5   	// Считается сумма пары крайних элементов и умножается на количество пар
+-> 6   		return 0;
+   7   	}
+(lldb) fr v
+(int) left_board = -4
+(int) right_board = 6
+(int) sum = 11
+
+Тест №3. Приклад з методички.
+
+mishaaaaa@mishaaaaa-VirtualBox:~/Desktop/programming-bresla/lab03$ lldb dist/main.bin 
+(lldb) target create "dist/main.bin"
+Current executable set to '/home/mishaaaaa/Desktop/programming-bresla/lab03/dist/main.bin' (x86_64).
+(lldb) b 6
+Breakpoint 1: where = main.bin`main + 54 at main.c:6:2, address = 0x0000000000401146
+(lldb) run
+Process 5219 launched: '/home/mishaaaaa/Desktop/programming-bresla/lab03/dist/main.bin' (x86_64)
+Process 5219 stopped
+* thread #1, name = 'main.bin', stop reason = breakpoint 1.1
+    frame #0: 0x0000000000401146 main.bin`main at main.c:6:2
+   3   		int right_board = 52; //задается правая граница диапозона
+   4   		int sum = (left_board + right_board) * (right_board - left_board + 1) / 2; //вычисляется сумма целых чисел в диапозоне методом Гаусса.
+   5   	// Считается сумма пары крайних элементов и умножается на количество пар
+-> 6   		return 0;
+   7   	}
+(lldb) fr v
+(int) left_board = 50
+(int) right_board = 52
+(int) sum = 153
+
+*Точка входу знаходиться в бібліотеці часу виконання "C runtime", а процедура main() зазначається точкою входу в код користовича. Вона одна, бо програма виконується послідовно.
