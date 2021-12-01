@@ -1,0 +1,107 @@
+1. Перш за все, я зробив пустий клас main.
+
+int main(){
+        return 0;
+}
+
+2. Я добавив інпут двох елементів.
+
+int main(){
+        int ticket = 123006; //номер білета, що треба перевірити
+        return 0;
+}
+
+3. Записав у програму логіку обчислення лівої та правої частин білета
+
+int main(){
+        int ticket = 123006; //номер білета, що треба перевірити
+        int left_sum = ticket/100000 + ticket/10000%10 + ticket/1000%10; //обчислення суми перших трьох цифр білета
+        int right_sum = ticket%10 + ticket/10%10 + ticket/100%10;//обчислення суми останніх трьох цифр білета
+        return 0;
+}
+
+4. Добавив змінну, що відповідає за поточний стан білета та її зміну в залежності від виконання умови, порівняння частин, обчисленних напередодні.
+
+int main(){
+        int ticket = 123006; //номер білета, що треба перевірити
+        int left_sum = ticket/100000 + ticket/10000%10 + ticket/1000%10; //обчислення суми перших трьох цифр білета
+        int right_sum = ticket%10 + ticket/10%10 + ticket/100%10;//обчислення суми останніх трьох цифр білета
+        char status = 'F';//змінна, що визначає чи є білет щасливим
+        if(left_sum == right_sum){ //перевірка білета на щасливість
+                status = 'T';//зміна статуса, при виконанні умови
+        }
+        return 0;
+}
+
+5. Перевірив роботу програми на прикладі нещасливого білета.
+
+user@user-vtp305-12:~/programming-bresla/lab04$ lldb dist/main.bin
+(lldb) target create "dist/main.bin"
+Current executable set to 'dist/main.bin' (x86_64).
+(lldb) l
+   1   	int main(){
+   2   		int ticket = 123456;
+   3   		int left_sum = ticket/100000 + ticket/10000%10 + ticket/1000%10;
+   4   		int right_sum = ticket%10 + ticket/10%10 + ticket/100%10;
+   5   		char status = 'F';
+   6   		if(left_sum == right_sum){
+   7   			status = 'T';
+   8   		}
+   9   		return 0;
+   10  	}
+(lldb) b 9
+Breakpoint 1: where = main.bin`main + 167 at main.c:9, address = 0x0000000000400527
+(lldb) run
+Process 15930 launched: '/home/user/programming-bresla/lab04/dist/main.bin' (x86_64)
+Process 15930 stopped
+* thread #1, name = 'main.bin', stop reason = breakpoint 1.1
+    frame #0: 0x0000000000400527 main.bin`main at main.c:9
+   6   		if(left_sum == right_sum){
+   7   			status = 'T';
+   8   		}
+-> 9   		return 0;
+   10  	}
+(lldb) fr v
+(int) ticket = 123456
+(int) left_sum = 6
+(int) right_sum = 15
+(char) status = 'F'
+(lldb) q
+
+Як ми бачимо, status = 'F', тож програма працює коректно.
+Також перевірив на щасливому білеті
+
+user@user-vtp305-12:~/programming-bresla/lab04$ lldb dist/main.bin
+(lldb) target create "dist/main.bin"
+Current executable set to 'dist/main.bin' (x86_64).
+(lldb) l
+   1   	int main(){
+   2   		int ticket = 123006;
+   3   		int left_sum = ticket/100000 + ticket/10000%10 + ticket/1000%10;
+   4   		int right_sum = ticket%10 + ticket/10%10 + ticket/100%10;
+   5   		char status = 'F';
+   6   		if(left_sum == right_sum){
+   7   			status = 'T';
+   8   		}
+   9   		return 0;
+   10  	}
+(lldb) b 9
+Breakpoint 1: where = main.bin`main + 167 at main.c:9, address = 0x0000000000400527
+(lldb) run
+Process 15974 launched: '/home/user/programming-bresla/lab04/dist/main.bin' (x86_64)
+Process 15974 stopped
+* thread #1, name = 'main.bin', stop reason = breakpoint 1.1
+    frame #0: 0x0000000000400527 main.bin`main at main.c:9
+   6   		if(left_sum == right_sum){
+   7   			status = 'T';
+   8   		}
+-> 9   		return 0;
+   10	}
+(lldb) fr v
+(int) ticket = 123006
+(int) left_sum = 6
+(int) right_sum = 6
+(char) status = 'T'
+(lldb) q
+
+Тут status = 'T', що також свідчить про правильну роботу кода
