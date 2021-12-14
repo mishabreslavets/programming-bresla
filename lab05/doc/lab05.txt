@@ -1,0 +1,92 @@
+1. Перш за все, я зробив пустий клас main.
+
+int main(){
+        return 0;
+}
+
+2. Я добавив інпут елемента input_number, що відповідає за введене число, що треба перевірити, та змінну res що свідчить про результат виконання програми.
+
+#include <stdbool.h>
+int main(){
+        int input_number = 37;
+        bool res = false;
+        return 0;
+}
+
+3. Я добавив цикл for, що буде виконуватися input_number^0.5 разів
+
+#include <stdbool.h>
+
+int main(){
+        int input_number = 37;
+        bool res = false;
+        for(int i = 2; i*i <= input_number; i++){
+        }
+        return 0;
+}
+
+4. Я добавив перевірку условним оператором if на залишок від ділення на і, щоб виявити чи є і множником input_number
+
+#include <stdbool.h>
+
+int main(){
+        int input_number = 37;
+        bool res = false;
+        for(int i = 2; i*i <= input_number; i++){
+                if (input_number%i == 0){
+                        res = true;
+                }
+        }
+        return 0;
+}
+
+Я перевірив роботу програми на двох тестах. Першим було складене число 25.
+
+misha@misha-ThinkPad-E470:~/programming-bresla/lab05$ lldb src/main.bin
+(lldb) target create "src/main.bin"
+Current executable set to '/home/misha/programming-bresla/lab05/src/main.bin' (x86_64).
+(lldb) list
+(lldb) l
+   13  		return 0;
+   14  	}
+(lldb) l
+(lldb) b 13
+Breakpoint 1: where = main.bin`main + 92 at main.c:13:2, address = 0x000000000040116c
+(lldb) run
+Process 3146 launched: '/home/misha/programming-bresla/lab05/src/main.bin' (x86_64)
+Process 3146 stopped
+* thread #1, name = 'main.bin', stop reason = breakpoint 1.1
+    frame #0: 0x000000000040116c main.bin`main at main.c:13:2
+   10  			}
+   11  		}
+   12  		result = res;
+-> 13  		return 0;
+   14  	}
+(lldb) fr v
+(int) input_number = 25
+(bool) res = true
+(bool) result = true
+
+Наступний тест був 37.
+
+misha@misha-ThinkPad-E470:~/programming-bresla/lab05$ lldb src/main.bin
+(lldb) target create "src/main.bin"
+Current executable set to '/home/misha/programming-bresla/lab05/src/main.bin' (x86_64).
+(lldb) b 13
+Breakpoint 1: where = main.bin`main + 84 at main.c:13:2, address = 0x0000000000401164
+(lldb) run
+Process 3239 launched: '/home/misha/programming-bresla/lab05/src/main.bin' (x86_64)
+Process 3239 stopped
+* thread #1, name = 'main.bin', stop reason = breakpoint 1.1
+    frame #0: 0x0000000000401164 main.bin`main at main.c:13:2
+   10  			}
+   11  		}
+   12  	//	result = res;
+-> 13  		return 0;
+   14  	}
+(lldb) fr v
+(int) input_number = 37
+(bool) res = false
+(lldb) q
+
+Як можна побачити, перевірка виконується коректно.
