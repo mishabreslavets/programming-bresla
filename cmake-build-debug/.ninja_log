@@ -1,0 +1,6 @@
+# ninja log v5
+1	27	1652954772164565819	build.ninja	ac1fdb72c447b16b
+0	54	1652954760256496463	CMakeFiles/programming_bresla.dir/lab08/src/main.c.o	b9f06f5affda6111
+54	101	1652954760304496741	programming_bresla	d815493fe64d2f0d
+0	40	1652954653227927568	CMakeFiles/programming_bresla.dir/lab02/src/main.c.o	5525ec0ccbd778d0
+0	53	1652954653239927626	CMakeFiles/programming_bresla.dir/lab02/src/lib.c.o	d866218fbb486ff5

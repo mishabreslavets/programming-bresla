@@ -1,0 +1,3 @@
+/home/misha/programming-bresla/cmake-build-debug/CMakeFiles/programming_bresla.dir
+/home/misha/programming-bresla/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/misha/programming-bresla/cmake-build-debug/CMakeFiles/rebuild_cache.dir
