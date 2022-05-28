@@ -17,7 +17,7 @@ int main() {
             {111,   222,   33,   444,   555  },
             {1111,  2222,  3333,  4444,  5555 },
             {11111, 22222, 33333, 44444, 55}};
-    int* answer = extract_diog_and_sortit(*input, N);
+    int* answer = extract_diog_and_sortit((int*)input, N);
     if(answer==NULL){
         printf("no memory enough\n");
         return 1;
