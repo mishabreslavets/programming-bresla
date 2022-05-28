@@ -24,5 +24,4 @@
             }
         }
         return result;
-        free(result);
     }
