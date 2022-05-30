@@ -10,20 +10,14 @@
  */
 
 int main() {
-//    long ltime = time (NULL);
-//    int stime = (unsigned int) ltime/2;
-//    srand(stime);
-
     char s[100];
     FILE* ff=fopen("../assets/input.txt","r");
     if(ff!=NULL)
     {
         while(!feof(ff))
         {
-            fscanf(ff,"%s",s);
-//            if(s[0]=='a' || s[0]=='o' || s[0]=='u' || s[0]=='i'||  s[0]=='y' )
-//                s[0]-='a'-'A';
-            printf("%s",s);
+            fscanf(ff,"%s ",s);
+            printf("%s ,s);
 
         }
         printf("\n");
@@ -37,7 +31,6 @@ int main() {
     printf("Algorithm works properly only with 4x4 matrix. Input initial_matrix you want to reverse: \n");
     for(int i = 0; i < length; i++){
         for(int j = 0; j < length; j++){
-//            *(*(initial_matrix + i) + j) = rand()%10+1;
             scanf("%d", *(initial_matrix + i) + j);
         }
     }
@@ -52,8 +45,6 @@ int main() {
             }
         }
     }
-
-//    printf("Deter %d \n", determinant);
     double rev_matrix[4][4];
     for (int i = 0; i < length; ++i) {
         for (int j = 0; j < length; ++j) {
@@ -71,6 +62,5 @@ int main() {
         }
         printf("]\n");
     }
-//    free(determinant);
     return 0;
 }
