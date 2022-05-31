@@ -17,7 +17,7 @@ int main() {
         while(!feof(ff))
         {
             fscanf(ff,"%s ",s);
-            printf("%s ,s);
+            printf("%s " ,s);
 
         }
         printf("\n");
